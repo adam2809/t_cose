@@ -521,7 +521,6 @@ enum t_cose_err_t {
      * verifying a signature. */
     T_COSE_ERR_TOO_MANY_TAGS = 37,
 
-<<<<<<< HEAD
     /** When decoding a header parameter that is not a string, integer or boolean
      * was encountered with no callback set handle it. See t_cose_ignore_param_cb()
      * and related. */
@@ -537,14 +536,13 @@ enum t_cose_err_t {
     T_COSE_ERR_CRIT_PARAMETER_IN_UNPROTECTED = 40,
 
     T_COSE_ERR_INSUFFICIENT_SPACE_FOR_PARAMETERS = 41,
-=======
+
     /**
      * When verifying a \c COSE_Mac0, something is wrong with the
      * format of the CBOR. For example, it is missing something like
      * the payload.
      */
-    T_COSE_ERR_MAC0_FORMAT = 38,
->>>>>>> 1a1d142 (Add COSE_Mac0 support)
+    T_COSE_ERR_MAC0_FORMAT = 42,
 };
 
 /**
