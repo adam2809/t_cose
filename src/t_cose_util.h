@@ -270,6 +270,29 @@ enum t_cose_err_t create_tbs_hash(int32_t                cose_algorithm_id,
 struct q_useful_buf_c get_short_circuit_kid(void);
 #endif
 
+/**
+ * \brief Map QCBOR decode error to COSE errors.
+ *
+ * \param[in] qcbor_error   The QCBOR error to map.
+ *
+ * \return This returns one of the error codes defined by
+ *         \ref t_cose_err_t.
+ */
+static inline enum t_cose_err_t
+qcbor_decode_error_to_t_cose_error(QCBORError qcbor_error)
+{
+    if(qcbor_error == QCBOR_ERR_TOO_MANY_TAGS) {
+        return T_COSE_ERR_TOO_MANY_TAGS;
+    }
+    if(QCBORDecode_IsNotWellFormedError(qcbor_error)) {
+        return T_COSE_ERR_CBOR_NOT_WELL_FORMED;
+    }
+    if(qcbor_error != QCBOR_SUCCESS) {
+        return T_COSE_ERR_SIGN1_FORMAT;
+    }
+    return T_COSE_SUCCESS;
+}
+
 #ifdef __cplusplus
 }
 #endif
